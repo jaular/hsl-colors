@@ -1,26 +1,58 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import Heading from "./components/Heading";
+import Slider from "./components/Slider";
+import Tag from "./components/Tag";
+import Footer from "./components/Footer";
+
+class App extends Component {
+  state = {
+    saturation: 75,
+    lightness: 60,
+  };
+
+  handleSaturation = (value) => {
+    this.setState({ saturation: value });
+  };
+
+  handleLightness = (value) => {
+    this.setState({ lightness: value });
+  };
+
+  render() {
+    const items = Array.from(Array(37).keys());
+    const { saturation, lightness } = this.state;
+    return (
+      <React.Fragment>
+        <Heading />
+        <section className="container max-width-adaptive-lg margin-y-lg">
+          <Slider
+            value={saturation}
+            name="sliderSaturation"
+            label="Saturation"
+            onSlide={this.handleSaturation}
+          />
+          <Slider
+            value={lightness}
+            name="sliderLightness"
+            label="Lightness"
+            onSlide={this.handleLightness}
+          />
+          <ul className="grid-auto-md gap-sm">
+            {items.map((item, id) => (
+              <Tag
+                key={id}
+                hue={item * 10}
+                saturation={saturation}
+                lightness={lightness}
+              />
+            ))}
+          </ul>
+        </section>
+        <Footer />
+      </React.Fragment>
+    );
+  }
 }
 
 export default App;
