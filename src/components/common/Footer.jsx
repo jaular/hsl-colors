@@ -7,7 +7,7 @@ const Footer = () => {
         <div className="flex items-center text-sm">
           Made with
           <svg
-            className="icon icon--sm margin-x-xxs"
+            className="icon margin-x-xs"
             viewBox="-11.5 -10.23174 23 20.46348"
             aria-hidden="true"
           >
@@ -19,9 +19,9 @@ const Footer = () => {
               <ellipse rx="11" ry="4.2" transform="rotate(120)" />
             </g>
           </svg>
-          and
+          |
           <svg
-            className="icon icon--sm margin-x-xxs"
+            className="icon margin-x-xs"
             viewBox="0 0 40 40"
             aria-hidden="true"
           >

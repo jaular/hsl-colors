@@ -1,12 +1,12 @@
 import React from "react";
 
 const Tag = ({ hue, saturation, lightness }) => {
-  const bgColor = `hsl(${hue}, ${saturation}%, ${lightness}%)`;
-  const bgColorFormat = `HSL(${hue}°, ${saturation}%, ${lightness}%)`;
-
-  const textColorLightness =
+  const bkgrdColor = `hsl(${hue}, ${saturation}%, ${lightness}%)`;
+  const lightnessColor =
     lightness <= 20 ? parseFloat(lightness) + 50 : lightness - 50;
-  const textColor = `hsl(${hue}, ${saturation}%, ${textColorLightness}%)`;
+  const textColor = `hsl(${hue}, ${saturation}%, ${lightnessColor}%)`;
+
+  const displayColor = `${hue}°, ${saturation}%, ${lightness}%`;
 
   /* 
     hsl(hue, saturation, lightness)
@@ -19,10 +19,10 @@ const Tag = ({ hue, saturation, lightness }) => {
     <li>
       <div
         className="tag align-center"
-        style={{ backgroundColor: bgColor, color: textColor }}
+        style={{ backgroundColor: bkgrdColor, color: textColor }}
       >
-        <p className="text-md">{hue}</p>
-        <p className="text-xs">{bgColorFormat}</p>
+        <p className="text-base">{hue}</p>
+        <p className="text-xs padding-top-xxs">{displayColor}</p>
       </div>
     </li>
   );
