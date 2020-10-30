@@ -7,7 +7,7 @@ import Footer from "./components/common/Footer";
 function App() {
   return (
     <>
-      <Heading />
+      <Heading text="Colors" />
       <HSL />
       <Footer />
     </>

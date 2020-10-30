@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 
-const Slider = ({ name, value, label, onSlide }) => {
+const Slider = ({ name, value, label, max, onSlide }) => {
   useEffect(() => {
     let frontEnd = document.createElement("script");
     frontEnd.src = process.env.PUBLIC_URL + "/static/js/_1_slider.js"; // 👈 make sure to use the correct path
@@ -28,7 +28,7 @@ const Slider = ({ name, value, label, onSlide }) => {
             id={name}
             name={name}
             min="0"
-            max="100"
+            max={max}
             step="1"
             value={value}
             onChange={handleChange}

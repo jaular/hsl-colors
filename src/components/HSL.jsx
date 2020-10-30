@@ -1,41 +1,48 @@
 import React, { useState } from "react";
 
 import Slider from "./common/Slider";
-import Tag from "./common/Tag";
+import Tags from "./common/Tags";
 
 const HSL = () => {
+  const [hue, setHue] = useState(150);
   const [saturation, setSaturation] = useState(75);
   const [lightness, setLightness] = useState(60);
 
-  const items = Array.from(Array(36).keys());
+  // const items = Array.from(Array(1).keys());
 
   return (
-    <>
-      <section className="container max-width-adaptive-lg margin-y-lg">
-        <Slider
-          value={saturation}
-          name="sliderSaturation"
-          label="Saturation"
-          onSlide={setSaturation}
-        />
-        <Slider
-          value={lightness}
-          name="sliderLightness"
-          label="Lightness"
-          onSlide={setLightness}
-        />
-        <ul className="grid-auto-sm gap-sm">
-          {items.map((item, id) => (
-            <Tag
-              key={id}
-              hue={item * 10}
-              saturation={saturation}
-              lightness={lightness}
+    <section>
+      <div className="container max-width-adaptive-sm">
+        <div className="grid gap-md items-center">
+          <div className="col-6@md">
+            <Slider
+              value={hue}
+              name="sliderHue"
+              label="Hue"
+              max={360}
+              onSlide={setHue}
             />
-          ))}
-        </ul>
-      </section>
-    </>
+            <Slider
+              value={saturation}
+              name="sliderSaturation"
+              label="Saturation"
+              max={100}
+              onSlide={setSaturation}
+            />
+            <Slider
+              value={lightness}
+              name="sliderLightness"
+              label="Lightness"
+              max={100}
+              onSlide={setLightness}
+            />
+          </div>
+          <div className="col-6@md">
+            <Tags hue={hue} saturation={saturation} lightness={lightness} />
+          </div>
+        </div>
+      </div>
+    </section>
   );
 };
 
