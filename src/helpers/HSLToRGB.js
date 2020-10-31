@@ -1,4 +1,4 @@
-export function HSLToHex(h, s, l) {
+export function HSLToRGB(h, s, l) {
   s /= 100;
   l /= 100;
 
@@ -34,15 +34,10 @@ export function HSLToHex(h, s, l) {
     g = 0;
     b = x;
   }
-  // Having obtained RGB, convert channels to hex
-  r = Math.round((r + m) * 255).toString(16);
-  g = Math.round((g + m) * 255).toString(16);
-  b = Math.round((b + m) * 255).toString(16);
+  r = Math.round((r + m) * 255);
+  g = Math.round((g + m) * 255);
+  b = Math.round((b + m) * 255);
 
-  // Prepend 0s, if necessary
-  if (r.length === 1) r = "0" + r;
-  if (g.length === 1) g = "0" + g;
-  if (b.length === 1) b = "0" + b;
-
-  return `#${r}${g}${b}`;
+  // return "rgb(" + r + "," + g + "," + b + ")";
+  return `rgb(${r},${g},${b})`;
 }

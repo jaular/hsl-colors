@@ -8,8 +8,6 @@ const HSL = () => {
   const [saturation, setSaturation] = useState(75);
   const [lightness, setLightness] = useState(60);
 
-  // const items = Array.from(Array(1).keys());
-
   return (
     <section>
       <div className="container max-width-adaptive-sm">

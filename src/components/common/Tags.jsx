@@ -3,6 +3,7 @@ import React from "react";
 import Tag from "./Tag";
 
 import { HSLToHex } from "../../helpers/HSLToHex";
+import { HSLToRGB } from "../../helpers/HSLToRGB";
 
 const Tags = ({ hue, saturation, lightness }) => {
   const backgroundColor = `hsl(${hue}, ${saturation}%, ${lightness}%)`;
@@ -11,15 +12,8 @@ const Tags = ({ hue, saturation, lightness }) => {
   const textColor = `hsl(${hue}, ${saturation}%, ${lightnessColor}%)`;
 
   const displayHSL = `hsl(${hue}°, ${saturation}%, ${lightness}%)`;
-
-  /* 
-    hsl(hue, saturation, lightness)
-    Hue is a degree on the color wheel from 0 to 360. 0 is red, 120 is green, 240 is blue.
-    Saturation is a percentage value; 0% means a shade of gray and 100% is the full color.
-    Lightness is also a percentage; 0% is black, 100% is white.
-  */
-
   const displayHEX = HSLToHex(hue, saturation, lightness);
+  const displayRGB = HSLToRGB(hue, saturation, lightness);
 
   const colors = [
     {
@@ -31,6 +25,11 @@ const Tags = ({ hue, saturation, lightness }) => {
       id: 2,
       text: "HEX",
       displayColor: displayHEX,
+    },
+    {
+      id: 3,
+      text: "RGB",
+      displayColor: displayRGB,
     },
   ];
 
